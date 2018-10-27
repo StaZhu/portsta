@@ -1,18 +1,15 @@
 <?php
-
-$open = "打开";
-$port = range(0,10000,1);
-
-$remoteip="10.170.72.254";
+/* Port Segment*/
+$port = range(80,443,1);
+/* Ip Address */
+$remoteip="xxx.xxx.xxx.xxx";
 
 for ($k = 0; $k < sizeof($port); $k++) {
-    $fp = @fsockopen($remoteip, $port[$k], $errno, $errstr, 1);
+    $fp = @fsockopen($remoteip, $port[$k], $errno, $errstr, 0.01);
     if ($fp) {
-        echo "{$remoteip}:{$port[$k]} {$open}";
-        echo "\n";
+        echo "{$remoteip}:{$port[$k]} opened\n";
     } else {
         continue;
     } 
 }
-
 ?>
